@@ -2,6 +2,8 @@
 
 Résumé des patrons de conception expliqués dans le livre [Design Patterns in Ruby](http://designpatternsinruby.com/), où [Russ Olsen](http://russolsen.com/) explique et adapte à Ruby 14 des 23 modèles de conception originaux du GoF (Gang des quatres).
 
+Ce travail est une traduction du contenu original qui peut ètre trouvé ici : [davidgf/design-patterns-in-ruby](davidgf/design-patterns-in-ruby)
+
 ## Patrons de conception
 
 ### GoF Patterns
