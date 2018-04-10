@@ -1,13 +1,14 @@
+
 # Singleton Pattern
 
-## Problem
-We need to have a single instance of certain class across the whole application.
+## Problème
+Nous avons besoin d'avoir une seule instance d'une certaine classe dans toute l'application.
 
 ## Solution
-In the **Singleton** pattern the access to the constructor is restricted, so that it cannot be instantiated. So, the creation of the single instance is done inside the class and is held is a class variable, and it can be accessed through a getter across the application.
+Dans le modèle **Singleton**, l'accès au constructeur est limité, de sorte qu'il ne peut pas être instancié. Ainsi, la création de l'instance unique se fait à l'intérieur de la classe et est tenue dans une variable de classe, et on peut y accéder par l'intermédiaire d'un "getter" à travers l'application.
 
 ## Example
-Let's consider the implementation of a logger class:
+Considérons l'implémentation d'une classe "logger" :
 
 ```ruby
 class SimpleLogger
@@ -39,7 +40,7 @@ class SimpleLogger
 end
 ```
 
-Logging is a feature used across the whole application, so it makes sense that there should exist only a single instance of the logger. We can make sure that nobody instantiate twice the `SimpleLogger` class by making its constructor private:
+La journalisation (logging) est une fonctionnalité utilisée dans l'ensemble de l'application, il est donc logique qu'il n'existe qu'une seule instance de l'enregistreur. Nous pouvons nous assurer que personne n'instancie deux fois la classe `SimpleLogger' en rendant son constructeur privé :
 
 ```ruby
 class SimpleLogger
@@ -57,7 +58,7 @@ end
 SimpleLogger.instance.info('Computer wins chess game.')
 ```
 
-We can get the same behavior by including the `Singleton` module, so that we can avoid duplicating code if we create several singletons:
+Nous pouvons obtenir le même comportement en incluant le module `Singleton`, de sorte que nous pouvons éviter de dupliquer le code si nous créons plusieurs singletons :
 
 ```ruby
 require 'singleton'

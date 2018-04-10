@@ -1,14 +1,14 @@
+
 # Command Pattern
 
-## Problem
-We want to perform some specific task without knowing how the whole process is or having any information about the receiver of the request.
+## Problème
+Nous voulons effectuer une tâche spécifique sans savoir comment se déroule l'ensemble du processus ou avoir des informations sur le destinataire de la demande.
 
 ## Solution
-The Command pattern decouples the object that needs to perform a specific task from the one that knows how to do it. It encapsulates all the needed information to do the job into its own object, including who the receiver(s) is(are), the methods to invoke and the parameters. That way, any object that wants to perform the task only needs to know about the command object interface.
+Le modèle de commande découple l'objet qui a besoin d'exécuter une tâche spécifique de celui qui sait comment le faire. Il encapsule toutes les informations nécessaires à l'exécution du travail dans son propre objet, y compris l'identité du ou des destinataires, les méthodes à invoquer et les paramètres. De cette façon, tout objet qui veut exécuter la tâche n'a besoin que de connaître l'interface de l'objet de commande.
 
-## Example
-Let's consider a button implementation of some GUI framework, which has a method called upon button click.
-
+## Exemple
+Considérons l'implémentation d'un bouton d'un framework GUI, qui a une méthode appelée clic de bouton.
 ```ruby
 class SlickButton
 
@@ -21,7 +21,7 @@ class SlickButton
 end
 ```
 
-So, we could extend the button class overriding the `on_button_push` method to perform certain actions whenever a user clicks it. For example, if the button's purpose is saving a document, we could do something like this:
+Ainsi, nous pourrions étendre la classe de bouton surchargeant la méthode `on_button_push` pour effectuer certaines actions chaque fois qu'un utilisateur clique dessus. Par exemple, si le but du bouton est d'enregistrer un document, nous pourrions faire quelque chose comme ceci :
 
 ```ruby
 class SaveButton < SlickButton
@@ -31,7 +31,7 @@ class SaveButton < SlickButton
 end
 ```
 
-However, a complex GUI could have hundreds of buttons, which means that we would end up having several hundreds of subclasses of our button. There is an easier way. We can factor out the code that performs the action into its own object, which implements a simple interface. Then, we can refactor our button's implementation to receive the command object as a parameter and calling it when it's clicked.
+Cependant, une GUI complexe pourrait avoir des centaines de boutons, ce qui signifie que nous finirions par avoir plusieurs centaines de sous-classes de notre bouton. Il y a un moyen plus facile. Nous pouvons factoriser le code qui exécute l'action dans son propre objet, qui implémente une interface simple. Ensuite, nous pouvons refactoriser l'implémentation de notre bouton pour recevoir l'objet de commande comme paramètre et l'appeler quand on clique dessus.
 
 ```ruby
 class SaveCommand
@@ -55,7 +55,7 @@ end
 save_button = SlickButton.new(SaveCommand.new)
 ```
 
-The Command pattern is pretty useful if we need to implement **undo** feature. All we need to do is implementing the `unexecute` method in our command object. For example, this is how we would implement the task of creating a file:
+Le modèle de commande est très utile si nous avons besoin d'implémenter la fonction **undo****. Tout ce que nous avons à faire est d'implémenter la méthode `unexecute` dans notre objet de commande. Par exemple, c'est ainsi que nous pourrions mettre en œuvre la tâche de création d'un fichier :
 
 ```ruby
 class CreateFile < Command
@@ -77,7 +77,7 @@ class CreateFile < Command
 end
 ```
 
-Another situation where the command pattern is really handy is in installation programs. Combining it with the **composite** pattern, we can store a list of tasks to be performed:
+Une autre situation où le modèle de commande est vraiment pratique est dans les programmes d'installation. En le combinant avec le motif **composite**, nous pouvons stocker une liste des tâches à effectuer :
 
 ```ruby
 class CompositeCommand < Command

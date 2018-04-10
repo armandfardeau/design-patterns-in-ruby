@@ -1,14 +1,15 @@
+
 # Template Method Pattern
 
-## Problem
-We have a complex bit of code, but somewhere in the middle there is a bit that needs to vary.
+## Problème
+Nous avons un peu de code complexe, mais quelque part au milieu, il y a un peu de code qui doit varier.
 
 ## Solution
-The general idea of the Template Method pattern is to build an abstract base class with a skeletal method, which drives the bit of the processing that needs to vary by making calls to abstract methods, which are then supplied by the concrete subclasses. So, the abstract base class controls the higher-level processing and the sub-classes simply fill in the details.
+L'idée générale de la méthode des modèles est de construire une classe de base abstraite avec une méthode squelettique, qui conduit le bit du traitement qui doit varier en faisant des appels à des méthodes abstraites, qui sont ensuite fournies par les sous-classes concrètes. Ainsi, la classe de base abstraite contrôle le traitement de niveau supérieur et les sous-classes remplissent simplement les détails.
 
-## Example
+## Exemple
 
-We have to generate a HTML report, so we come up with something like this:
+Nous devons générer un rapport HTML, donc nous arrivons à quelque chose comme ceci :
 
 ```ruby
 class Report
@@ -32,8 +33,7 @@ class Report
 end
 ```
 
-Later on, we realize that we must add a new format: plain text. Easy, we can pass format as a parameter and decide what to display based on it:
-
+Plus tard, on se rend compte qu'il faut ajouter un nouveau format : le texte brut. Facile, nous pouvons passer le format comme paramètre et décider ce qu'il faut afficher en fonction de celui-ci :
 ```ruby
 class Report
   def initialize
@@ -68,7 +68,7 @@ class Report
 end
 ```
 
-That's kind of messy, the code that handles both formats is tangled up and, even worse, it's not extensible at all (what if we want to add a new format?). Let's refactor the code looking for what stay the same. In most reports the basic flow is the same, regardless of the format: output header, output title, output each line of the report and output any trailing stuff required by the format. We could create an abstract base class that performs all those steps but leaves the details to a subclass:
+C'est un peu désordonné, le code qui gère les deux formats est emmêlé et, pire encore, il n'est pas extensible du tout (et si on veut ajouter un nouveau format ?). Refacturons le code en cherchant ce qui reste le même. Dans la plupart des rapports, le flux de base est le même, quel que soit le format : en-tête de sortie, titre de sortie, sortie de chaque ligne du rapport et sortie de tous les éléments de suivi requis par le format. Nous pourrions créer une classe de base abstraite qui exécute toutes ces étapes mais laisse les détails à une sous-classe :
 
 ```ruby
 class Report
@@ -118,7 +118,7 @@ class Report
 end
 ```
 
-We can now define a subclass that implements the details
+Nous pouvons maintenant définir une sous-classe qui implémente les détails :
 
 ```ruby
 class PlainTextReport < Report

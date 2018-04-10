@@ -1,13 +1,14 @@
+
 # Builder Pattern
 
-## Problem
-We need to create a complex object that is hard to configure.
+## Problème
+Nous devons créer un objet complexe et difficile à configurer.
 
 ## Solution
-The **Builder** pattern encapsulates the construction logic of complex objects in its own class. It defines an interface to configure the object step by step, hiding the implementation details.
+Le motif **Builder** encapsule la logique de construction d'objets complexes dans sa propre classe. Il définit une interface pour configurer l'objet étape par étape, en masquant les détails de l'implémentation.
 
-## Example
-Let's imagine that we have to build a system that keeps track of the components of a computer.
+## Exemple
+Imaginons que nous devons construire un système qui garde la trace des composants d'un ordinateur.
 
 ```ruby
 class Computer
@@ -23,7 +24,7 @@ class Computer
 end
 ```
 
-The creation of a `Computer` object can get really complex, as the `Motherboard`, for example, is a whole object:
+La création d'un objet `Ordinateur` peut devenir vraiment complexe, car la `carte mère`, par exemple, est un objet entier :
 
 ```ruby
 class CPU
@@ -49,7 +50,7 @@ class Motherboard
 end
 ```
 
-So, the process of building a `Computer` can be really tedious:
+Ainsi, le processus de construction d'un `Ordinateur` peut être vraiment fastidieux :
 
 ```ruby
 # Build a fast computer with lots of memory...
@@ -63,7 +64,7 @@ drives << Drive.new(:dvd, 4700, false)
 computer = Computer.new(:lcd, motherboard, drives)
 ```
 
-It can be made much simpler by encapsulating the construction logic in a class:
+Il peut être rendu beaucoup plus simple en encapsulant la logique de construction dans une classe :
 
 ```ruby
 class ComputerBuilder

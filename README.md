@@ -1,38 +1,38 @@
 # Design Patterns in Ruby
 
-Summary of the design patterns explained in the book [Design Patterns in Ruby](http://designpatternsinruby.com/), where [Russ Olsen](http://russolsen.com/) explains and adapts to Ruby 14 of the original 23 GoF design patterns.
+Résumé des patrons de conception expliqués dans le livre [Design Patterns in Ruby](http://designpatternsinruby.com/), où [Russ Olsen](http://russolsen.com/) explique et adapte à Ruby 14 des 23 modèles de conception originaux du GoF (Gang des quatres).
 
-## Design Patterns
+## Patrons de conception
 
 ### GoF Patterns
 
-* [Adapter](adapter.md): helps two incompatible interfaces to work together
-* [Builder](builder.md): create complex objects that are hard to configure
-* [Command](command.md): performs some specific task without having any information about the receiver of the request
-* [Composite](composite.md): builds a hierarchy of tree objects and interacts with all them the same way
-* [Decorator](decorator.md): vary the responsibilities of an object adding some features
-* [Factory](factory.md): create objects without having to specify the exact class of the object that will be created
-* [Interpreter](interpreter.md): provides a specialized language to solve a well defined problem of know domain
-* [Iterator](iterator.md): provides a way to access a collection of sub-objects without exposing the underlaying representation
-* [Observer](observer.md): helps building a highly integrated system, maintainable and avoids coupling between classes
-* [Proxy](proxy.md): allows us having more control over how and when we access to a certain object
-* [Singleton](singleton.md): have a single instance of certain class across the application
-* [Strategy](strategy.md): varies part of an algorithm at runtime
-* [Template Method](template_method.md): redefines certain steps of an algorithm without changing the algorithm's structure
+* [Adapter](adapter.md): aide deux interfaces incompatibles à travailler ensemble
+* [Builder](builder.md): créer des objets complexes et difficiles à configurer
+* [Command](command.md): exécute une tâche spécifique sans avoir d'informations sur le destinataire de la demande.
+* [Composite](composite.md): construit une hiérarchie d'objets arborescents et interagit de la même manière avec tous ces objets.
+* [Decorator](decorator.md): varier les responsabilités d'un objet en y ajoutant certaines caractéristiques.
+* [Factory](factory.md): créer des objets sans avoir à spécifier la classe exacte de l'objet qui sera créé.
+* [Interpreter](interpreter.md): fournit un langage spécialisé pour résoudre un problème bien défini de domaine de connaissance.
+* [Iterator](iterator.md): permet d'accéder à une collection de sous-objets sans exposer la représentation sous-jacente.
+* [Observer](observer.md): aide à la construction d'un système hautement intégré, maintenable et évite le couplage entre les classes.
+* [Proxy](proxy.md): nous permet d'avoir plus de contrôle sur la façon et le moment où nous accédons à un certain objet.
+* [Singleton](singleton.md): avoir une seule instance d'une certaine classe dans l'application.
+* [Strategy](strategy.md): fait varier la partie d'un algorithme au moment de l'exécution.
+* [Template Method](template_method.md): redéfinit certaines étapes d'un algorithme sans changer la structure de l'algorithme.
 
 ### Non-GoF Patterns: Patterns For Ruby
 
-* [Convention Over Configuration](convention_over_configuration.md): build an extensible system and not carrying the configuration burden.
-* [Domain-Specific Language](dsl.md): build a convenient syntax for solving problems of a specific domain.
-* [Meta-Programming](meta_programming.md): gain more flexibility when defining new classes and create custom tailored objects on the fly.
+* [Convention Over Configuration](convention_over_configuration.md): construire un système extensible et ne pas porter le fardeau de la configuration.
+* [Domain-Specific Language](dsl.md): construire une syntaxe pratique pour résoudre les problèmes d'un domaine spécifique.
+* [Meta-Programming](meta_programming.md): gagner en flexibilité lors de la définition de nouvelles classes et créer des objets personnalisés à la volée.
 
 
-## Contributing
+## Contribution
 
-Contributions are welcome! What could you do?:
-* Find typos and grammar mistakes
-* Propose a better way to explain a pattern
-* Add clearer examples of a pattern usage
-* Add other GoF patterns that are not covered in the book
+Les contributions sont les bienvenues ! Que pourriez-vous faire ?:
+* Trouver des fautes de frappe et de grammaire.
+* Proposer une meilleure façon d'expliquer un modèle.
+* Ajouter des exemples plus clairs d'utilisation d'un motif.
+* Ajouter d'autres motifs GoF qui ne sont pas couverts dans le livre.
 
-**Code examples refactoring** PR's will **not be considered**. The examples provided by Russ Olsen in his book are meant to be simple and self explanatory, not the best performing or most elegant, their purpose is just educational.
+**Exemples de refactoring** Les PR ne seront **pas pris en compte**. Les exemples fournis par Russ Olsen dans son livre se veulent simples et auto-explicatifs, pas les plus performants ou les plus élégants, leur but est simplement éducatif.

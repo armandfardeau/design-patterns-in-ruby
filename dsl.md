@@ -1,13 +1,14 @@
+
 # Domain-Specific Language Pattern
 
-## Problem
-We want to build a convenient syntax for solving problems of a specific domain.
+## Problème
+Nous voulons construire une syntaxe pratique pour résoudre les problèmes d'un domaine spécifique.
 
 ## Solution
-Ruby is a really flexible an has human friendly syntax, sometimes reading a piece of Ruby code even feels like reading a book. **The Domain-Specific Language (DSL)** pattern takes advantage of this and suggest building a new language on top of Ruby. It starts by building data structures, which hold the information about the tasks to be performed. Then, it defines several top-level methods that support the DSL and which the end user will use to build a program with the newly created language. Finally, the program is evaluated and interpreted as Ruby method calls.
+Ruby est une syntaxe vraiment flexible et a une syntaxe humaine, parfois la lecture d'un morceau de code Ruby donne même l'impression de lire un livre. **Le modèle DSL (Domain-Specific Language (DSL)** en profite et suggère de construire un nouveau langage sur Ruby. Il commence par la construction de structures de données qui contiennent les informations sur les tâches à exécuter. Ensuite, il définit plusieurs méthodes de haut niveau qui supportent le DSL et que l'utilisateur final utilisera pour construire un programme avec le langage nouvellement créé. Enfin, le programme est évalué et interprété comme des appels à la méthode Ruby.
 
-## Example
-We want to provide an simple way to create periodic backups of certain folders. We can easily do so with Ruby, but our end users might not know anything about programming, so we'll build a DSL for tat matter. First, we need to set up some data structures:
+## Exemple
+Nous voulons fournir un moyen simple de créer des sauvegardes périodiques de certains dossiers. Nous pouvons facilement le faire avec Ruby, mais nos utilisateurs finaux ne connaissent peut-être rien à la programmation, alors nous construirons un DSL. Tout d'abord, nous devons mettre en place des structures de données :
 
 ```ruby
 class Backup
@@ -59,7 +60,7 @@ class DataSource
 end
 ```
 
-The `Backup` class holds the information about the directories to be backed up and a method to perform it, while the `DataSource` class is a container for a path to a directory and has file finding capabilities. The only thing left is the top-level methods that will make use of the data structures and will let the end user define his program:
+La classe `Backup` contient les informations sur les répertoires à sauvegarder et une méthode pour l'exécuter, tandis que la classe `DataSource` est un conteneur pour un chemin d'accès à un répertoire et a des capacités de recherche de fichiers. Il ne reste que les méthodes de haut niveau qui utiliseront les structures de données et permettront à l'utilisateur final de définir son programme :
 
 ```ruby
 def backup(dir, find_expression=All.new)
@@ -78,7 +79,7 @@ eval(File.read('backup.pr'))
 Backup.instance.run
 ```
 
-It's a pretty simple language: with the `backup` method we set the directories to be backed up, with `to` the destination folder of the copy and with `interval` how often the copy will be performed. Then, the program created by the end user is read and interpreted as Ruby code with `eval`. How does a program program created with our DSL look like? Pretty simple:
+C'est un langage assez simple : avec la méthode de `backup` nous réglons les répertoires à sauvegarder, avec `to` le dossier de destination de la copie et avec `interval` la fréquence d'exécution de la copie. Ensuite, le programme créé par l'utilisateur final est lu et interprété comme du code Ruby avec `eval`. À quoi ressemble un programme créé avec notre DSL ? Plutôt simple :
 
 ```ruby
 backup '/home/russ/documents'

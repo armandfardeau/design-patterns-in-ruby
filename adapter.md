@@ -1,13 +1,14 @@
+
 # Adapter Pattern
 
-## Problem
-We want an object talk to another but their interfaces don't match.
+## Problème
+Nous voulons qu'un objet parle à un autre mais leurs interfaces ne correspondent pas.
 
 ## Solution
-We simply wrap the **adaptee** with our new **adapter** class. This class implements an interface that the invoker understands, although all the work is performed by the adapted object.
+Nous enveloppons simplement **l'adaptateur** avec notre nouvelle classe **d'adaptateur**. Cette classe implémente une interface que l'appelant comprend, bien que tout le travail soit effectué par l'objet adapté.
 
-## Example
-Let's think of a class that encrypts a file, which takes two open files, one for reading and another one for writing:
+## Exemple
+Pensons à une classe qui chiffre un fichier, qui prend deux fichiers ouverts, l'un pour la lecture et l'autre pour l'écriture :
 
 ```ruby
 class Encrypter
@@ -27,8 +28,7 @@ class Encrypter
 end
 ```
 
-What happens if the data we want to secure happen to be in a string, rather than in a file? We need an object that looks like an open file, this is, supports the same interface as the Ruby `IO` object. We can create an `StringIOAdapter` to achieve so:
-
+Que se passe-t-il si les données que nous voulons sécuriser se trouvent dans une chaîne de caractères plutôt que dans un fichier ? Nous avons besoin d'un objet qui ressemble à un fichier ouvert, c'est-à-dire qui supporte la même interface que l'objet Ruby `IO`. Nous pouvons créer un `StringIOAdapter` pour y parvenir :
 ```ruby
 class StringIOAdapter
   def initialize(string)
@@ -51,8 +51,7 @@ class StringIOAdapter
 end
 ```
 
-Now we can use a `String` as if it was an open file (it only implements a small part of the `IO` interface, essentally what we need)
-
+Maintenant nous pouvons utiliser une `String` comme s'il s'agissait d'un fichier ouvert (il n'implémente qu'une petite partie de l'interface `IO` essentiellement ce dont nous avons besoin).
 ```ruby
 encrypter = Encrypter.new('XYZZY')
 reader= StringIOAdapter.new('We attack at dawn')
