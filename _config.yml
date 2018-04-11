@@ -1,6 +1,6 @@
-title: Minimal theme
+title: design-patterns-in-ruby
 logo: /img/ruby.png
-description: Minimal is a theme for GitHub Pages.
+description: Résumé des patrons de conception expliqués dans le livre Design Patterns in Ruby, où Russ Olsen explique et adapte à Ruby 14 des 23 modèles de conception originaux du GoF (Gang des quatres). Ce travail est une traduction du contenu original qui peut ètre trouvé ici : davidgf/design-patterns-in-ruby
 show_downloads: true
 google_analytics:
 theme: jekyll-theme-minimal
