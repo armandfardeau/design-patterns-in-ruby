@@ -1,13 +1,14 @@
+
 # Factory Pattern
 
-## Problem
-We need to create objects without having to specify the exact class of the object that will be created.
+## Problème
+Nous devons créer des objets sans avoir à spécifier la classe exacte de l'objet qui sera créé.
 
 ## Solution
-The **Factory** pattern is a specialization of the [Template](template.md) pattern. We start by creating a generic base class where we don't make the "which class" decision. Instead, whenever it needs to create a new object, it calls a method that is defined in a subclass. So, depending on the subclass we use (**factory**), we create objects of one class or another (**products**).
+Le modèle **Factory** est une spécialisation du modèle[Template](template.md). Nous commençons par créer une classe de base générique où nous ne prenons pas la décision "quelle classe". Au lieu de cela, chaque fois qu'il a besoin de créer un nouvel objet, il appelle une méthode qui est définie dans une sous-classe. Ainsi, en fonction de la sous-classe que nous utilisons (**usine**), nous créons des objets d'une classe ou d'une autre (**produits**).
 
-## Example
-Imagine that you are asked to build a simulation of life in a pond, which has plenty of ducks:
+## Exemple
+Imaginez que l'on vous demande de construire une simulation de la vie dans un étang, où il y a beaucoup de canards :
 
 ```ruby
 class Pond
@@ -29,7 +30,7 @@ pond = Pond.new(3)
 pond.simulate_one_day
 ```
 
-But, how would we model our `Pond` if we wanted to have frogs instead of ducks? In the implementation above, we are specifying in the `Pond`'s initializer that it should be filled up with ducks. So, we'll refactor it so that the decision of creating one type of animal or another is made in a subclass:
+Mais comment modéliserions-nous notre étang si nous voulions avoir des grenouilles au lieu de canards ? Dans l'implémentation ci-dessus, nous spécifions dans l'initialisateur de l'étang qu'il doit être rempli de canards. Donc, nous allons le refactoriser pour que la décision de créer un type d'animal ou un autre soit prise dans une sous-classe :
 
 ```ruby
 class Pond
