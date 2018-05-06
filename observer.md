@@ -1,13 +1,14 @@
+
 # Observer Pattern
 
-## Problem
-We want to build a system that is highly integrated, that is, a system where every part is aware of the state of the whole. We also want it to be maintainable, so we should avoid coupling between classes.
+## Problème
+Nous voulons construire un système hautement intégré, c'est-à-dire un système où chaque partie est consciente de l'état de l'ensemble. Nous voulons aussi qu'il soit maintenable, donc nous devrions éviter le couplage entre les classes.
 
 ## Solution
-If we want some component (observer) to know about the activities of another one (subject), we could simply hard-wire both classes and inform the former upon some actions performed on the latter. This means that we should pass a reference to the observer when we create the subject, and call some of its methods when the latter changes. However, in this approach we are doing something we want to avoid: increasing coupling. What is more, if we wanted to inform some other observer, we should modify the implementation of the subject so that it notifies it, even though nothing has changed. A much better approach is keeping a list of objects interested in the subject changes and defining a clean interface between the source of the news (the subject) and the consumers (the observers). That way, whenever there's some change on the subject, we just need to iterate over the list of observers and notify them using the interface we defined.
+Si nous voulons qu'un composant (observateur) connaisse les activités d'un autre (sujet), nous pourrions simplement câbler les deux classes et informer le premier sur certaines actions effectuées sur le second. Cela signifie que nous devrions passer une référence à l'observateur lorsque nous créons le sujet, et appeler certaines de ses méthodes lorsque ce dernier change. Cependant, dans cette approche, nous faisons quelque chose que nous voulons éviter : augmenter le couplage. De plus, si nous voulions informer un autre observateur, nous devrions modifier la mise en œuvre du sujet pour qu'il le notifie, même si rien n'a changé. Une bien meilleure approche consiste à tenir une liste d'objets intéressés par les changements de sujet et à définir une interface propre entre la source de l'information (le sujet) et les consommateurs (les observateurs). De cette façon, chaque fois qu'il y a un changement sur le sujet, il suffit d'itération sur la liste des observateurs et de les avertir en utilisant l'interface que nous avons définie.
 
-## Example
-Let's consider a `Employee` object that has a `salary` property. We'd like to be able to change his salary as well as keeping informed the payroll system about such modifications. The simplest way to achieve this is passing a reference to payroll and inform it whenever we modify the employee `salary`:
+## Exemple
+Considérons un objet `Employee` qui a un bien `salary`. Nous aimerions pouvoir modifier son salaire et tenir le système de paie au courant de ces modifications. La façon la plus simple d'y parvenir est de passer une référence à la paie et de l'informer chaque fois que nous modifions le `salary` de l'employé :
 
 ```ruby
 class Employee
@@ -28,7 +29,7 @@ class Employee
 end
 ```
 
-The problem is that if we want to notify somebody else (`TaxMan`, for instance), we should modify the `Employee`. This means that other classes are driving the changes to `Employee`, even though nothing has changed there. Let's provide a way to keep a list of interested objects on salary changes.
+Le problème est que si nous voulons notifier quelqu'un d'autre (`TaxMan`, par exemple), nous devons modifier l'employé. Cela signifie que d'autres classes sont à l'origine des changements apportés à `Employee`, même si rien n'y a changé. Fournissons un moyen de garder une liste des objets intéressés sur les changements de salaire.
 
 ```ruby
 class Employee
@@ -63,7 +64,7 @@ class Employee
 end
 ```
 
-Now we can use the `add_observer` method to add as many objects as we want to the observers list, and all of them will be notified whenever the salary changes.
+Maintenant nous pouvons utiliser la méthode `add_observer` pour ajouter autant d'objets que nous voulons à la liste des observateurs, et tous seront notifiés chaque fois que le salaire change.
 
 ```ruby
 fred = Employee.new('Fred', 'Crane Operator', 30000.0)
@@ -77,7 +78,7 @@ fred.add_observer(tax_man)
 fred.salary=35000.0
 ```
 
-Even though we can implement the pattern by ourselves, the Ruby standard library has a prebuilt module that let us make any of our objects observable, freeing us from defining the same methods everywhere. Let's refactor the `Employee` class to use the `Observable` module:
+Même si nous pouvons implémenter le pattern par nous-mêmes, la bibliothèque standard Ruby possède un module pré-construit qui nous permet de rendre n'importe lequel de nos objets observables, nous libérant ainsi de définir les mêmes méthodes partout. Repenser la classe `Employee` pour utiliser le module `Observable`:
 
 ```ruby
 require 'observer'
