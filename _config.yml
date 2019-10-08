@@ -3,4 +3,4 @@ logo: /img/ruby.png
 description: Résumé des patrons de conception expliqués dans le livre Design Patterns in Ruby
 show_downloads: true
 google_analytics:
-theme: jekyll-theme-minimal
+theme: jekyll-theme-hacker
